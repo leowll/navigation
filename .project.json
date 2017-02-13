@@ -7,13 +7,18 @@
     "targetFolder": "dist",
     "sourceFolder": "webapp",
     "buildRequired": true,
-    "lastBuildDateTime": "Mon, 13 Feb 2017 05:03:20 GMT"
+    "lastBuildDateTime": "Mon, 13 Feb 2017 07:08:05 GMT"
   },
   "generation": [
     {
       "templateId": "ui5template.basicSAPUI5ApplicationProject",
       "templateVersion": "1.40.12",
       "dateTimeStamp": "Thu, 09 Feb 2017 08:34:35 GMT"
+    },
+    {
+      "templateId": "ui5template.basicSAPUI5ApplicationComponent",
+      "templateVersion": "1.4.0",
+      "dateTimeStamp": "Mon, 13 Feb 2017 06:24:13 GMT"
     }
   ],
   "translation": {
@@ -38,6 +43,6 @@
   "hcpdeploy": {
     "account": "i336694trial",
     "name": "navigation",
-    "lastVersionWeTriedToDeploy": "1.0.0"
+    "lastVersionWeTriedToDeploy": "1.0.1"
   }
 }
