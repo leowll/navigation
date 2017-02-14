@@ -14,10 +14,10 @@ sap.ui.define([
 			this._bSortDescending = false;
 			this._aValidSortFields = ["EmployeeID", "FirstName", "LastName"];
 			this._sSearchQuery = null;
-			this._initViewSettingsDialog();
 			this._oRouterArgs = null;
 			// make the search bookmarkable
 			oRouter.getRoute("employeeOverview").attachMatched(this._onRouteMatched, this);
+			this._initViewSettingsDialog();
 		},
 		_onRouteMatched: function(oEvent) {
 			// save the current query state
@@ -30,7 +30,7 @@ sap.ui.define([
 				// sorting via URL hash
 				this._applySorter(this._oRouterArgs.query.sortField, this._oRouterArgs.query.sortDescending);
 				// show dialog via URL hash
-				if (!this._oRouterArgs.query.showDialog) {
+				if (!!this._oRouterArgs.query.showDialog) {
 					this._oVSD.open();
 					// make sure the dialog does not get closed automatically
 					oEvent.preventDefault();
@@ -139,6 +139,17 @@ sap.ui.define([
 			// Note: no input validation is implemented here 
 			this._oVSD.setSelectedSortItem(sSortField);
 			this._oVSD.setSortDescending(bSortDescending);
+		},
+		onItemPressed: function(oEvent) {
+			var oItem, oCtx, oRouter;
+			oItem = oEvent.getParameter("listItem");
+			oCtx = oItem.getBindingContext();
+			this.getRouter().navTo("employeeResume", {
+				employeeId: oCtx.getProperty("EmployeeID"),
+				query: {
+					tab: "Info"
+				}
+			});
 		}
 	});
 });
