@@ -57,3 +57,5 @@ mock_preview_sapui5.html
 UIAdaptation_index.html
 changes_preview.js
 /dist/
+.project.json
+/.project.json
