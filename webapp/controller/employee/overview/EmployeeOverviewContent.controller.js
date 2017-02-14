@@ -7,6 +7,7 @@ sap.ui.define([
 	"use strict";
 	return BaseController.extend("sap.ui.demo.nav.controller.employee.overview.EmployeeOverviewContent", {
 		onInit: function() {
+			var oRouter = this.getRouter();
 			this._oTable = this.getView().byId("employeesTable");
 			this._oVSD = null;
 			this._sSortField = null;
@@ -14,13 +15,28 @@ sap.ui.define([
 			this._aValidSortFields = ["EmployeeID", "FirstName", "LastName"];
 			this._sSearchQuery = null;
 			this._initViewSettingsDialog();
+			this._oRouterArgs = null;
+			// make the search bookmarkable
+			oRouter.getRoute("employeeOverview").attachMatched(this._onRouteMatched, this);
+		},
+		_onRouteMatched: function(oEvent) {
+			// save the current query state
+			this._oRouterArgs = oEvent.getParameter("arguments");
+			this._oRouterArgs.query = this._oRouterArgs["?query"] || {};
+			delete this._oRouterArgs["?query"];
+			if (this._oRouterArgs.query) {
+				// search/filter via URL hash
+				this._applySearchFilter(this._oRouterArgs.query.search);
+			}
 		},
 		onSortButtonPressed: function(oEvent) {
 			this._oVSD.open();
 		},
 		onSearchEmployeesTable: function(oEvent) {
-			var sQuery = oEvent.getSource().getValue();
-			this._applySearchFilter(oEvent.getSource().getValue());
+			var oRouter = this.getRouter();
+			// update the hash with the current search term
+			this._oRouterArgs.query.search = oEvent.getSource().getValue();
+			oRouter.navTo("employeeOverview",this._oRouterArgs, true /*no history*/);
 		},
 		_initViewSettingsDialog: function() {
 			var oRouter = this.getRouter();

@@ -6,8 +6,8 @@
   "build": {
     "targetFolder": "dist",
     "sourceFolder": "webapp",
-    "buildRequired": true,
-    "lastBuildDateTime": "Mon, 13 Feb 2017 07:08:05 GMT"
+    "buildRequired": false,
+    "lastBuildDateTime": "Tue, 14 Feb 2017 01:44:58 GMT"
   },
   "generation": [
     {
@@ -43,7 +43,7 @@
   "hcpdeploy": {
     "account": "i336694trial",
     "name": "navigation",
-    "lastVersionWeTriedToDeploy": "1.0.1"
+    "lastVersionWeTriedToDeploy": "1.0.2"
   },
   "beautifier": {
     "keep_array_indentation": false,

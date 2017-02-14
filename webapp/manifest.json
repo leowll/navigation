@@ -66,27 +66,36 @@
 					"target": "notFound"
 				}
 			},
-			"routes": [{
-				"pattern": "",
-				"name": "appHome",
-				"target": "home"
-			}, {
-				"pattern": "employees",
-				"name": "employeeList",
-				"target": "employees"
-			}, {
-				"pattern": "employees/overview",
-				"name": "employeeOverview",
-				"target": ["employeeOverviewTop", "employeeOverviewContent"]
-			}, {
-				"pattern": "employees/{employeeId}",
-				"name": "employee",
-				"target": "employee"
-			}, {
-				"pattern": "employees/{employeeId}/resume:?query:",
-				"name": "employeeResume",
-				"target": "employeeResume"
-			}],
+			"routes": [
+				{
+					"pattern": "",
+					"name": "appHome",
+					"target": "home"
+				},
+				{
+					"pattern": "employees",
+					"name": "employeeList",
+					"target": "employees"
+				},
+				{
+					"pattern": "employees/overview:?query:",
+					"name": "employeeOverview",
+					"target": [
+						"employeeOverviewTop",
+						"employeeOverviewContent"
+					]
+				},
+				{
+					"pattern": "employees/{employeeId}",
+					"name": "employee",
+					"target": "employee"
+				},
+				{
+					"pattern": "employees/{employeeId}/resume:?query:",
+					"name": "employeeResume",
+					"target": "employeeResume"
+				}
+			],
 			"targets": {
 				"home": {
 					"viewName": "Home",
